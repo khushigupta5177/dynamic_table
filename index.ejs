@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table</title>
+</head>
+<body>
+
+<h2>Student Table</h2>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Marks</th>
+    <th>Result</th>
+  </tr>
+
+  <!-- 👉 Data yaha use hoga -->
+  <% students.forEach(s => { %>
+    <tr>
+      <td><%= s.name %></td>
+      <td><%= s.marks %></td>
+      <td><%= s.result %></td>
+    </tr>
+  <% }) %>
+
+</table>
+
+</body>
+</html>

@@ -1,15 +1,27 @@
+const express = require("express");
+const app = express();
+
+app.set("view engine", "ejs");
+
 const students = [
   { name: "Aman", marks: 80 },
   { name: "Riya", marks: 45 },
   { name: "John", marks: 60 }
 ];
 
-const resultData = students.map(student => {
-  return {
-    Name: student.name,
-    Marks: student.marks,
-    Result: student.marks >= 50 ? "Pass" : "Fail"
-  };
+app.get("/", (req, res) => {
+
+  
+  const resultData = students.map(s => ({
+    name: s.name,
+    marks: s.marks,
+    result: s.marks >= 50 ? "Pass" : "Fail"
+  }));
+
+  // 👉 EJS ko data bhejna
+  res.render("index", { students: resultData });
 });
 
-console.table(resultData);
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
